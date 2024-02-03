@@ -1,4 +1,4 @@
-username:deltateam4734
-password:UjtVA1LSPVMqcJSR   
+username:dinesh
+password:Fc7wc88Ue7Ozcn47 
 
-url=mongodb+srv://deltateam4734:UjtVA1LSPVMqcJSR@cluster0.5gbafil.mongodb.net/?retryWrites=true&w=majority
+url=mongodb+srv://dinesh:Fc7wc88Ue7Ozcn47@cluster0.5gbafil.mongodb.net/?retryWrites=true&w=majority
