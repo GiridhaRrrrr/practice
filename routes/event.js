@@ -1,6 +1,8 @@
 const express=require("express");
 const { renderNewEventForm } = require("../controllers/event");
-const route=express.Router();
+const router=express.Router();
 
 
-route.get("/newEvent",renderNewEventForm);
+router.get("/newEvent",renderNewEventForm);
+
+module.exports=router;

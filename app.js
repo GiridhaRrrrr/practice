@@ -14,9 +14,10 @@ const session=require("express-session");
 const MongoStore=require("connect-mongo")
 const passport=require("passport");
 const LocalStrategy=require("passport-local");
+const ExpressError = require("./util/ExpressError.js");
 
 //routers
-const user=require("./routes/user");
+const user=require("./routes/user.js");
 const organizer=require("./routes/orgainzer");
 const event=require("./routes/event");
 
@@ -48,10 +49,10 @@ app.set("view engine","ejs");
 
 app.use(express.static(path.join(__dirname,"/public")));
 app.use(methodOverride("_method"));
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({extended:true}));   
 
 const store=MongoStore.create({
-    mongoUrl:dbURL,
+    mongoUrl:db_Url,
     crypto:{
         secret:process.env.SECRET,
     },

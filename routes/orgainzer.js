@@ -1,11 +1,13 @@
 const express=require("express");
 const { renderOrganizerLogin, renderOrganizerSignup } = require("../controllers/organizer");
-const route=express.Router();
+const router=express.Router();
 
 
-route
+router
     .get("/organizerLogin",renderOrganizerLogin)
     .post("/organizerLogin",)
 
 
-route.get("/organizerSignup",renderOrganizerSignup);
+router.get("/organizerSignup",renderOrganizerSignup);
+
+module.exports=router;
