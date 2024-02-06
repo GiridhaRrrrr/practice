@@ -8,10 +8,10 @@
 	justify-content: center;
 	flex-grow: 1;
 	min-height: 350px;
-	background-image: url('https://i.ibb.co/dJkRvZ0/bg-img2.jpg');
+	background-image: url('https://res-console.cloudinary.com/dt526dnda/media_explorer_thumbnails/e791dfbf2b8a015ab3587dafb82d2e57/detailed');
 	background-blend-mode: luminosity;
 	color: var(--main-white-color);
-	height: 120vh;
+	height: 100vh;
 	background-size: cover;
 	font: 16px/1.5 "Dosis", sans-serif;
 	

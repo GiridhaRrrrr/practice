@@ -59,8 +59,7 @@
     
     
     
-    // Add active class on another page linked
-    // ==========================================
+    
     // $(window).on('load',function () {
     //     var current = location.pathname;
     //     console.log(current);
