@@ -11,3 +11,12 @@ module.exports.validateEvent=(req,res,next)=>{
     }
 }
 
+module.exports.isLoggedIn=async (req,res,next)=>{
+    if(!req.isAuthenticated()){
+        req.flash("error","you must login/signup before do anything");
+        return req.redirect("/user/userLogin");
+    }else{
+        next();
+    }
+}
+
