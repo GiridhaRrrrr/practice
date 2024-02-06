@@ -3,7 +3,9 @@ const { renderOrganizerLogin, renderOrganizerSignup } = require("../controllers/
 const route=express.Router();
 
 
-route.get("/organizerLogin",renderOrganizerLogin);
+route
+    .get("/organizerLogin",renderOrganizerLogin)
+    .post("/organizerLogin",)
 
 
 route.get("/organizerSignup",renderOrganizerSignup);
