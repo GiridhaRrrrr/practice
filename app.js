@@ -9,8 +9,20 @@ const mongoose=require("mongoose");
 const path=require("path");
 const methodOverride=require("method-override");
 const ejsMate=require("ejs-mate")
+const flash=require("connect-flash");
+const session=require("express-session");
+const MongoStore=require("connect-mongo")
+const passport=require("passport");
+const LocalStrategy=require("passport-local");
 
+//routers
+const user=require("./routes/user");
+const organizer=require("./routes/orgainzer");
+const event=require("./routes/event");
 
+//models
+const User=require("./models/user");
+const Orgainzer=require("./models/organizer");
 
 const PORT=8080;
 const db_Url=process.env.DB_URL;
@@ -19,6 +31,7 @@ async function main() {
     await mongoose.connect(db_Url);
   }
   
+
   
 main()
     .then((res)=>{
@@ -37,11 +50,64 @@ app.use(express.static(path.join(__dirname,"/public")));
 app.use(methodOverride("_method"));
 app.use(express.urlencoded({extended:true}));
 
+const store=MongoStore.create({
+    mongoUrl:dbURL,
+    crypto:{
+        secret:process.env.SECRET,
+    },
+    touchAfter:24*3600
+});
+
+store.on("error",()=>{
+    console.log("Error on mongo session store",err);
+})
+
+const sessionOptions={
+    store,
+    secret:process.env.SECRET,
+    resave:false,
+    saveUninitialized:true,
+    cookie:{
+        expires:Date.now()+7*24*60*60*1000,
+        maxAge:7*24*60*60*1000,
+        httpOnly:true,
+    },
+}
+
+app.use(session(sessionOptions));
+app.use(flash()); 
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+passport.use(new LocalStrategy(Orgainzer.authenticate()));
+passport.serializeUser(Orgainzer.serializeUser());
+passport.deserializeUser(Orgainzer.deserializeUser());
+
+
+app.use((req,res,next)=>{
+    res.locals.success=req.flash("success");
+    res.locals.error=req.flash("error");
+    res.locals.currUser=req.user;
+    next();
+})
+
+
 
 app.get("/",(req,res)=>{
     res.render("home/home.ejs");
 })
     
+
+app.use("/user",user);
+app.use("/organizer",organizer)
+app.use("/event",event);
+
+
+
 app.listen(PORT,()=>{
     console.log(`Server is listing on ${PORT}`);
 })
