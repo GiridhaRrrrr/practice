@@ -12,10 +12,10 @@
      </nav>
      <ul class="cd-tabs-content">
        <li data-content="login" class="selected">
-         <form name="login-form">
+         <form name="login-form" method="POST" action="/user/userLogin">
            <div class="form-fild">
-             <label for="username">Username</label>
-             <input type="text" name="username">
+             <label for="username">User Email</label>
+             <input type="email" name="username">
            </div>
            <div class="form-fild">
              <label for="password">Password</label>
@@ -26,22 +26,23 @@
          </form>
        </li>
        <li data-content="signup">
-         <form name="signup-form">
+         <form name="signup-form" method="POST" action="/user/userSignup">
            <div class="form-fild">
              <label for="susername">Username</label>
-             <input type="text" name="susername">
+             <input type="text" name="user[fullname]" id="susername">
            </div>
            <div class="form-fild">
              <label for="suserEmail">User Email</label>
-             <input type="text" name="suserEmail">
+             <input type="text" id="suserEmail" name="user[username]">
            </div>
            <div class="form-fild">
              <label for="spassword">Password</label>
-             <input type="password" name="spassword">
+             <input type="password" id="spassword" name="password">
            </div>
+           <input type="text" value="user" style="display: none;" name="user[typeOfUser]" required>
            <div class="form-fild">
              <label for="suserPhone">Phone</label>
-             <input type="text" maxlength="10" name="suserPhone">
+             <input type="text" id="suserPhone" maxlength="10" name="user[phone]">
            </div>
            <span class="error"></span>
            <button type="submit">Submit</button>

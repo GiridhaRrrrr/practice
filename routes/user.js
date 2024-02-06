@@ -3,7 +3,7 @@ const router=express.Router()
 const userController=require("../controllers/user");
 const WrapAsync=require("../util/wrapAsync");
 
-const passport = require("passport");
+const passportUser = require("passport");
 
 router
     .route("/userSignup")
@@ -14,6 +14,9 @@ router
 
 router
     .get("/userLogin",userController.renderUserLogin)
-    .post("/userLogin",passport.authenticate('local',{failureFlash:true,failureRedirect:"/user/userLogin"}),WrapAsync(userController.loginUser))
+    .post("/userLogin",passportUser.authenticate('local',{failureFlash:true,failureRedirect:"/user/userLogin"}),WrapAsync(userController.loginUser))
 
+
+router
+    .get("userLogout",)
 module.exports=router;

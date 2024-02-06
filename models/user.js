@@ -4,7 +4,15 @@ const passportLocalMongoose=require("passport-local-mongoose");
 
 
 const userSchema=new Schema({
+    fullname:{
+        type:String,
+        required:true
+    },
     phone:{
+        type:String,
+        required:true
+    },
+    typeOfUser:{
         type:String,
         required:true
     },

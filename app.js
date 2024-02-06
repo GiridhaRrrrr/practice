@@ -23,7 +23,7 @@ const event=require("./routes/event");
 
 //models
 const User=require("./models/user");
-const Orgainzer=require("./models/organizer");
+
 
 const PORT=8080;
 const db_Url=process.env.DB_URL;
@@ -84,9 +84,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-passport.use(new LocalStrategy(Orgainzer.authenticate()));
-passport.serializeUser(Orgainzer.serializeUser());
-passport.deserializeUser(Orgainzer.deserializeUser());
+
 
 
 app.use((req,res,next)=>{
@@ -95,7 +93,6 @@ app.use((req,res,next)=>{
     res.locals.currUser=req.user;
     next();
 })
-
 
 
 app.get("/",(req,res)=>{

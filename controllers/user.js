@@ -12,6 +12,7 @@ module.exports.signupUser=async (req,res,next)=>{
     let {user,password}=req.body;
     const newUser=new User(user);
     const registerUser= await User.register(newUser,password);
+    
     req.login(registerUser,(err)=>{
         if(err){
             return next(err);
@@ -22,6 +23,16 @@ module.exports.signupUser=async (req,res,next)=>{
 }
 
 module.exports.loginUser=async(req,res)=>{
-    req.flash("success","you are  successfully loggedin");
+    req.flash("success","you are  successfully logged in");
     res.redirect("/");
+}
+
+module.exports.logoutUser=async (req,res,next)=>{
+    req.logout((err)=>{
+        if(err){
+            next(err)
+        }
+        req.flash("success","you are logged out successfully");
+        res.redirect("/");
+    })
 }
