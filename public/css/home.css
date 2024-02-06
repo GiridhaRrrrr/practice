@@ -1,0 +1,50 @@
+
+  /* MAIN
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.page-main {
+    width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	flex-grow: 1;
+	min-height: 350px;
+	background-image: url('https://i.ibb.co/dJkRvZ0/bg-img2.jpg');
+	background-blend-mode: luminosity;
+	color: var(--main-white-color);
+	height: 120vh;
+	background-size: cover;
+	font: 16px/1.5 "Dosis", sans-serif;
+	
+  }
+  @media (max-width:767px) {
+    .page-main{
+
+        padding:2rem;
+    }
+  }
+  .page-main div {
+	max-width: 500px;
+  }
+  
+  .page-main h1 {
+	margin-bottom: 20px;
+	font-weight: bolder;
+	font-size: 4rem;
+	font-family:'Pacifico';
+	font-size: italic;
+  }
+  
+  .page-main p + p {
+	margin-top: 10px;
+  }
+
+  @media screen and (min-width: 768px) {
+	body {
+	  font-size: 18px;
+	}
+  
+	.page-main {
+	  padding-left: 90px;
+	}
+  }
+  
