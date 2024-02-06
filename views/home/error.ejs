@@ -1,0 +1,7 @@
+<% layout("layouts/boilerplate.ejs") %>
+<% block("head").append('<link rel="stylesheet" href="/css/error.css">') %>
+<h1><%=status%></h1>
+<h3><%= message %>  </h3>
+
+
+<% block("footer").append('')%>

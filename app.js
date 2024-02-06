@@ -106,6 +106,13 @@ app.use("/user",user);
 app.use("/organizer",organizer)
 app.use("/event",event);
 
+app.all("*",(req,res,next)=>{
+    next(new ExpressError(404,"page not found"));
+})
+app.use((err,req,res,next)=>{
+    let {status=500,message="some err"}=err;
+    res.status(status).render("home/error.ejs",{status,message});
+})
 
 
 app.listen(PORT,()=>{
