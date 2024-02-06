@@ -4,14 +4,9 @@ const passportLocalMongoose=require("passport-local-mongoose");
 
 
 const userSchema=new Schema({
-    gender:{
+    phone:{
         type:String,
-        enum:["Male","Female","Others"],
-        required:true,
-    },
-    dob:{
-        type:Date,
-        required:true,
+        required:true
     },
     registeredEvent:[
         {
